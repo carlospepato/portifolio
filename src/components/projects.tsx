@@ -27,24 +27,24 @@ export function Projects(){
     const [projects, setProjects] = useState<Project[]>([]);
     const [reload, setReload] = useState<boolean>(false);
     
-    // useEffect(() => {
-    //     const url = new URL(`https://api.github.com/users/carlospepato/repos`);
-    //     try{
-    //         fetch(url.toString())
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             if(data.message){
-    //                 console.log(data.message);
-    //                 return;
-    //             }
-    //         setProjects(data);
-    //         setReload(false);
-    //     });
-    //     }catch(error){
-    //         console.log(error);
-    //     }
+    useEffect(() => {
+        const url = new URL(`https://api.github.com/users/carlospepato/repos`);
+        try{
+            fetch(url.toString())
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.message){
+                    console.log(data.message);
+                    return;
+                }
+            setProjects(data);
+            setReload(false);
+        });
+        }catch(error){
+            console.log(error);
+        }
         
-    //   }, [reload]);
+      }, [reload]);
     return(
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
